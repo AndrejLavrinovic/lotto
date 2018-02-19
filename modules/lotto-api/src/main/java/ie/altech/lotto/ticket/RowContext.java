@@ -19,6 +19,7 @@ public class RowContext {
     private int luckyStrsMax;
     private int numbersSize;
     private int luckyStartsSize;
+    private DrawTypes type = DrawTypes.LOTTO;
 
     public RowContext(int numberMin, int numberMax, int numbersSize){
         this.numberMin = numberMin;
@@ -39,6 +40,7 @@ public class RowContext {
     public void setLuckyStrsMax(int luckyStrsMax){ this.luckyStrsMax = luckyStrsMax; }
     public void setNumbersSize(int numbersSize) {this.numbersSize = numbersSize; }
     public void setLuckyStartsSize(int luckyStartsSize){ this.luckyStartsSize = luckyStartsSize; }
+    public void setType(DrawTypes type){ this.type = type; }
 
     public int getNumberMin(){ return this.numberMin; }
     public int getNumberMax(){ return this.numberMax; }
@@ -46,4 +48,5 @@ public class RowContext {
     public int getLuckyStrsMax(){ return this.luckyStrsMax; }
     public int getNumbersSize(){ return this.numbersSize; }
     public int getLuckyStartsSize(){ return this.luckyStartsSize; }
+    public DrawTypes getType(){ return this.type; }
 }
