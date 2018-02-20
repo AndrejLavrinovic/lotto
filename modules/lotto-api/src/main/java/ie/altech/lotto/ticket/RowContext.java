@@ -12,41 +12,91 @@
 
 package ie.altech.lotto.ticket;
 
+import ie.altech.lotto.Rules;
+
 public class RowContext {
-    private int numberMin;
-    private int numberMax;
-    private int luckStarsMin;
-    private int luckyStrsMax;
-    private int numbersSize;
-    private int luckyStartsSize;
-    private DrawTypes type = DrawTypes.LOTTO;
+    private int min;
+    private int max;
+    private int bonusMin;
+    private int bonusMax;
+    private int size;
+    private int bonusSize;
+    private DrawType type = DrawType.LOTTO;
 
-    public RowContext(int numberMin, int numberMax, int numbersSize){
-        this.numberMin = numberMin;
-        this.numberMax = numberMax;
-        this.luckyStartsSize = numbersSize;
+    public RowContext(int min, int max, int size){
+        this.min = min;
+        this.max = max;
+        this.size = size;
     }
 
-    public RowContext(int numberMin, int numberMax, int numbersSize, int luckStarsMin, int luckyStrsMax, int luckyStartsSize){
-        this(numberMin, numberMax, numbersSize);
-        this.luckStarsMin = luckStarsMin;
-        this.luckyStrsMax = luckyStrsMax;
-        this.luckyStartsSize = luckyStartsSize;
+    public RowContext(int min, int max, int size, int bonusMin, int bonusMax, int bonusSize){
+        this(min, max, size);
+        this.bonusMin = bonusMin;
+        this.bonusMax = bonusMax;
+        this.bonusSize = bonusSize;
     }
 
-    public void setNumberMin(int numberMin){ this.numberMin = numberMin; }
-    public void setNumberMax(int numberMax){ this.numberMax = numberMax; }
-    public void setLuckStarsMin(int luckStarsMin){ this.luckStarsMin = luckStarsMin; }
-    public void setLuckyStrsMax(int luckyStrsMax){ this.luckyStrsMax = luckyStrsMax; }
-    public void setNumbersSize(int numbersSize) {this.numbersSize = numbersSize; }
-    public void setLuckyStartsSize(int luckyStartsSize){ this.luckyStartsSize = luckyStartsSize; }
-    public void setType(DrawTypes type){ this.type = type; }
+    public RowContext(Rules rule){
+        init(rule);
+    }
 
-    public int getNumberMin(){ return this.numberMin; }
-    public int getNumberMax(){ return this.numberMax; }
-    public int getLuckStarsMin(){ return this.luckStarsMin; }
-    public int getLuckyStrsMax(){ return this.luckyStrsMax; }
-    public int getNumbersSize(){ return this.numbersSize; }
-    public int getLuckyStartsSize(){ return this.luckyStartsSize; }
-    public DrawTypes getType(){ return this.type; }
+    public void setMin(int min){ this.min = min; }
+    public void setMax(int max){ this.max = max; }
+    public void setBonusMin(int bonusMin){ this.bonusMin = bonusMin; }
+    public void setBonusMax(int bonusMax){ this.bonusMax = bonusMax; }
+    public void setSize(int size) {this.size = size; }
+    public void setBonusSize(int bonusSize){ this.bonusSize = bonusSize; }
+    public void setType(DrawType type){ this.type = type; }
+
+    public int getMin(){ return this.min; }
+    public int getMax(){ return this.max; }
+    public int getBonusMin(){ return this.bonusMin; }
+    public int getBonusMax(){ return this.bonusMax; }
+    public int getSize(){ return this.size; }
+    public int getBonusSize(){ return this.bonusSize; }
+    public DrawType getType(){ return this.type; }
+
+    public RowContext min(int min){
+        this.min = min;
+        return this;
+    }
+
+    public RowContext max(int max){
+        this.max = max;
+        return this;
+    }
+
+    public RowContext bonusMin(int bonusMin){
+        this.bonusMin = bonusMin;
+        return this;
+    }
+
+    public RowContext bonusMax(int bonusMax){
+        this.bonusMax = bonusMax;
+        return this;
+    }
+
+    public RowContext size(int size){
+        this.size = size;
+        return this;
+    }
+
+    public RowContext bonusSize(int bonusSize){
+        this.bonusSize = bonusSize;
+        return this;
+    }
+
+    public RowContext type(DrawType type){
+        this.type = type;
+        return this;
+    }
+
+    public void init(Rules rule){
+        this.min = rule.getMin();
+        this.max = rule.getMax();
+        this.size = rule.getSize();
+        this.bonusMin = rule.getBonusMin();
+        this.bonusMax = rule.getBonusMax();
+        this.bonusSize = rule.getBonusSize();
+    }
 }
